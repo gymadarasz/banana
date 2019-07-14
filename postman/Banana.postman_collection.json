@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "b1ba360b-5ad4-4f98-8ea6-1379d03221c0",
+		"name": "Banana",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Banana Test Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/banana/index.php?stops=[\n{\n\"from\": \"Adolfo Suárez Madrid–Barajas Airport, Spain\",\n\"to\": \"London Heathrow, UK\"\n},\n{\n\"from\": \"Fazenda São Francisco Citros, Brazil\",\n\"to\": \"São Paulo–Guarulhos International Airport, Brazil\"\n},\n{\n\"from\": \"London Heathrow, UK\",\n\"to\": \"Loft Digital, London, UK\"\n},\n{\n\"from\": \"Porto International Airport, Portugal\",\n\"to\": \"Adolfo Suárez Madrid–Barajas Airport, Spain\"\n},\n{\n\"from\": \"São Paulo–Guarulhos International Airport, Brazil\",\n\"to\": \"Porto International Airport, Portugal\"\n}\n]",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"banana",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "stops",
+							"value": "[\n{\n\"from\": \"Adolfo Suárez Madrid–Barajas Airport, Spain\",\n\"to\": \"London Heathrow, UK\"\n},\n{\n\"from\": \"Fazenda São Francisco Citros, Brazil\",\n\"to\": \"São Paulo–Guarulhos International Airport, Brazil\"\n},\n{\n\"from\": \"London Heathrow, UK\",\n\"to\": \"Loft Digital, London, UK\"\n},\n{\n\"from\": \"Porto International Airport, Portugal\",\n\"to\": \"Adolfo Suárez Madrid–Barajas Airport, Spain\"\n},\n{\n\"from\": \"São Paulo–Guarulhos International Airport, Brazil\",\n\"to\": \"Porto International Airport, Portugal\"\n}\n]"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

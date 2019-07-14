@@ -4,10 +4,11 @@ namespace banana;
 
 /**
  * Banana Delivery Calculator
- * 
+ *
  * @author gyula.madarasz@gmail.com
  */
-class BananaDelivery {
+class BananaDelivery
+{
     
     /**
      *
@@ -48,19 +49,18 @@ class BananaDelivery {
     /**
      * can accept a set of journey steps in any order, and return the
      * journey in the correct order.
-     * 
-     * @param string $first first stop
+     *
      * @param array $travels full travels
      * @param int $distanceMinimum minimum distance for levenshtein calculations
      * @return string[] stops of travel
      */
-    public function sorting(string $first, array $travels, int $distanceMinimum = 0): array
+    public function sorting(array $travels, int $distanceMinimum = 0): array
     {
         
         // sorting setup
-        $this->first = $first;
         $this->travels = $travels;
         $this->distanceMinimum = $distanceMinimum;
+        $this->first = $this->getFirst();
         
         // find the first one
         $this->findFirstStop();
@@ -117,7 +117,7 @@ class BananaDelivery {
     
     /**
      * correction for results stops of journey
-     * 
+     *
      * @return string[]
      */
     protected function correctionTravels(): array
@@ -125,16 +125,15 @@ class BananaDelivery {
         $results = [];
         foreach ($this->sorted as $stop) {
             $results[] = $stop['from'];
-            $last = $stop['to'];
         }
-        $results[] = $last;
+        $results[] = $stop['to'];
         return $results;
     }
     
     /**
      * check the distance (or equality) between two string
      * using levenshtein calculation to being safe of misspelled words by monkeys
-     * 
+     *
      * @param string $to
      * @param string $from
      * @param int $distance
@@ -147,7 +146,7 @@ class BananaDelivery {
     
     /**
      * pop a travel of journey and push it into sorted results
-     * 
+     *
      * @param int $key
      */
     protected function popStop(int $key)
@@ -158,5 +157,25 @@ class BananaDelivery {
         $this->count++;
     }
     
+    /**
+     * 
+     * @return first of journey steps
+     * @throws Exception
+     */
+    protected function getFirst(): string
+    {
+        foreach ($this->travels as $from) {
+            $found = true;
+            foreach ($this->travels as $to) {
+                if ($from['from'] === $to['to']) {
+                    $found = false;
+                    break;
+                }
+            }
+            if ($found) {
+                return $from['from'];
+            }
+        }
+        throw new Exception('No start address');
+    }
 }
-

@@ -9,9 +9,10 @@ use Exception;
  *
  * @author gyula
  */
-class JSONParser {
-    
-    public function parse($json, $assoc = true) {
+class JSONParser
+{
+    public function parse($json, $assoc = true)
+    {
         $data = json_decode($json, $assoc);
         switch (json_last_error()) {
             case JSON_ERROR_NONE:
@@ -43,12 +44,12 @@ class JSONParser {
         return $data;
     }
     
-    public function encode($data) {
+    public function encode($data)
+    {
         $json = json_encode($data);
         if ($json === false) {
-            throw new Exception( json_last_error() );
+            throw new Exception(json_last_error());
         }
         return $json;
     }
-    
 }

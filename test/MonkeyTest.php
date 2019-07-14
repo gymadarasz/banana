@@ -7,12 +7,12 @@ namespace banana\test;
  *
  * @author gyula
  */
-class MonkeyTest {
-    
+class MonkeyTest
+{
     public function __construct()
     {
         $delivery = new \banana\BananaDelivery();
-        $results = $delivery->sorting("Fazenda São Francisco Citros, Brawzil", [
+        $results = $delivery->sorting([
             [
                 "from" => "Adolfo Suárez Madrid–Barajas Airport, Spain",
                 "to" => "London Heathrow, UK"

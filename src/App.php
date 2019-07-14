@@ -9,32 +9,41 @@ use Exception;
  *
  * @author gyula
  */
-class App {
+class App
+{
     
+    /**
+     *
+     * @var BananaDelivery
+     */
     protected $sorter;
     
+    /**
+     *
+     * @var JSONParser
+     */
     protected $parser;
     
-    public function __construct() {
+    /**
+     * Application
+     */
+    public function __construct()
+    {
         $this->sorter = new BananaDelivery();
         $this->parser = new JSONParser();
-        $results = $this->sorter->sorting($this->getStart(), $this->getStops());        
+        $stops = $this->getStops();
+        $results = $this->sorter->sorting($stops);
         $json = $this->parser->encode($results);
         echo $json;
     }
     
-    protected function getStart() {
-        if (!isset($_REQUEST['start']) || !$_REQUEST['start']) {
-            throw new Exception('Request should contains "start"', -1);
-        }
-        $start = $_REQUEST['start'];
-        if (!is_string($start)) {
-            throw new Exception('"start" should be a string', -1);
-        }
-        return $start;
-    }
-    
-    protected function getStops() {
+    /**
+     *
+     * @return array of journey steps
+     * @throws Exception
+     */
+    protected function getStops(): array
+    {
         if (!isset($_REQUEST['stops']) || !$_REQUEST['stops']) {
             throw new Exception('Request should contains "stops"', -1);
         }
