@@ -37,6 +37,13 @@ abstract class Test
         $this->assert($a, true);
     }
     
+    public static function runAll(array $tests) {
+        foreach ($tests as $test) {
+            $testObj = new $test;
+            $testObj->run();
+        }
+    }
+    
     public static function status()
     {
         echo "\n" . self::$counter . " assert OK\n";
