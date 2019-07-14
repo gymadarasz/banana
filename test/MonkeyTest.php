@@ -9,10 +9,10 @@ namespace banana\test;
  */
 class MonkeyTest extends Test
 {
-    
     protected $delivery;
     
-    public function setup() {
+    public function setup()
+    {
         $this->delivery = new \banana\BananaDelivery();
     }
     

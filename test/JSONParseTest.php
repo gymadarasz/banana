@@ -11,8 +11,8 @@ use Exception;
  */
 class JSONParseTest extends Test
 {
-    
-    public function setup() {
+    public function setup()
+    {
         $this->parser = new \banana\JSONParser();
     }
     

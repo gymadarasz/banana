@@ -13,7 +13,8 @@ abstract class Test
 {
     protected static $counter = 0;
     
-    public function __construct() {
+    public function __construct()
+    {
         $this->setup();
     }
     
