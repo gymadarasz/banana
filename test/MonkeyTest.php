@@ -2,6 +2,8 @@
 
 namespace banana\test;
 
+use Exception;
+
 /**
  * Description of MonkeyTest
  *
@@ -19,6 +21,8 @@ class MonkeyTest extends Test
     public function run()
     {
         $this->testOk();
+        $this->testMisspelledOk();
+        $this->testNoStartFail();
     }
     
     public function testOk()
@@ -54,5 +58,46 @@ class MonkeyTest extends Test
             "London Heathrow, UK",
             "Loft Digital, London, UK"
         ]);
+    }
+    
+    public function testMisspelledOk()
+    {
+        $results = $this->delivery->sorting([
+            [
+                'from' => 'AAA',
+                'to' => 'BBB',
+            ],[
+                'from' => 'BBB',
+                'to' => 'CC?', // <- misspelled
+            ],[
+                'from' => 'CCC',
+                'to' => 'DDD',
+            ],
+        ]);
+        
+        $this->assert($results, [
+            'AAA', 'BBB', 'CCC', 'DDD'
+        ]);
+    }
+    
+    public function testNoStartFail()
+    {
+        try {
+            $results = $this->delivery->sorting([
+                [
+                    'from' => 'AAA',
+                    'to' => 'BBB',
+                ],[
+                    'from' => 'BBB',
+                    'to' => 'CCC',
+                ],[
+                    'from' => 'CCC',
+                    'to' => 'AAA',
+                ],
+            ]);
+            $this->assertTrue(false);
+        } catch (Exception $e) {
+            $this->assert($e->getCode(), 1002);
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace banana;
 
+use Exception;
+
 /**
  * Banana Delivery Calculator
  *
@@ -176,6 +178,6 @@ class BananaDelivery
                 return $from['from'];
             }
         }
-        throw new Exception('No start address');
+        throw new Exception('No start address', 1002);
     }
 }
