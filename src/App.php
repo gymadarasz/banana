@@ -18,7 +18,9 @@ class App {
     public function __construct() {
         $this->sorter = new BananaDelivery();
         $this->parser = new JSONParser();
-        $this->sorter->sorting($this->getStart(), $this->getStops());        
+        $results = $this->sorter->sorting($this->getStart(), $this->getStops());        
+        $json = $this->parser->encode($results);
+        echo $json;
     }
     
     protected function getStart() {
@@ -40,6 +42,7 @@ class App {
         if (!is_string($stops)) {
             throw new Exception('"stop" should be a JSON string', -1);
         }
-        return $this->parser($stops);
+        $parsed = $this->parser->parse($stops, true);
+        return $parsed;
     }
 }

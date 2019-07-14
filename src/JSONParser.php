@@ -2,6 +2,8 @@
 
 namespace banana;
 
+use Exception;
+
 /**
  * JSONParser
  *
@@ -9,12 +11,11 @@ namespace banana;
  */
 class JSONParser {
     
-    public function parse($json) {
-        $data = json_decode($json);
-        $msg = '';
+    public function parse($json, $assoc = true) {
+        $data = json_decode($json, $assoc);
         switch (json_last_error()) {
             case JSON_ERROR_NONE:
-                $msg = ' - No errors';
+                $msg = '';
             break;
             case JSON_ERROR_DEPTH:
                 $msg = ' - Maximum stack depth exceeded';
@@ -40,6 +41,14 @@ class JSONParser {
             throw new Exception('JSON parse error' . $msg, -1);
         }
         return $data;
+    }
+    
+    public function encode($data) {
+        $json = json_encode($data);
+        if ($json === false) {
+            throw new Exception( json_last_error() );
+        }
+        return $json;
     }
     
 }
