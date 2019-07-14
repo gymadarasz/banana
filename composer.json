@@ -1,0 +1,13 @@
+{
+    "name": "gymadarasz/banana",
+    "description": "banana test",
+    "license": "Free",
+    "authors": [
+        {
+            "name": "Gyula Madarasz",
+            "email": "gyula.madarasz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
