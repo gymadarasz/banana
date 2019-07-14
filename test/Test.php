@@ -46,6 +46,6 @@ abstract class Test
     
     public static function status()
     {
-        echo "\n" . self::$counter . " assert OK\n";
+        echo "\n" . self::$counter . " assert(s) OK\n";
     }
 }
