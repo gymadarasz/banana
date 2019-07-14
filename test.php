@@ -2,6 +2,12 @@
 
 include __DIR__ . '/vendor/autoload.php';
 
-$test = new banana\test\MonkeyTest;
+use banana\test\JSONParseTest;
+use banana\test\MonkeyTest;
+use banana\test\Test;
+
+$test = new MonkeyTest;
 $test->run();
-$test->status();
+$jsonTest = new JSONParseTest;
+$jsonTest->run();
+Test::status();

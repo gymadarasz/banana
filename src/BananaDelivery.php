@@ -158,7 +158,7 @@ class BananaDelivery
     }
     
     /**
-     * 
+     *
      * @return first of journey steps
      * @throws Exception
      */

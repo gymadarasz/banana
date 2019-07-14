@@ -2,18 +2,21 @@
 
 namespace banana\test;
 
+use Exception;
+
 /**
  * Test
  *
  * @author gyula
  */
-class Test {
+class Test
+{
+    protected static $counter = 0;
     
-    protected $counter = 0;
-    
-    protected function assert($a, $b) {
+    protected function assert($a, $b)
+    {
         if ($a === $b) {
-            $this->counter++;
+            self::$counter++;
             echo '.';
             return true;
         }
@@ -22,8 +25,13 @@ class Test {
         throw new Exception('Assert error: ' . $details, 1);
     }
     
-    public function status() {
-        echo "\n{$this->counter} assert OK\n";
+    protected function assertTrue($a)
+    {
+        $this->assert($a, true);
     }
     
+    public static function status()
+    {
+        echo "\n" . self::$counter . " assert OK\n";
+    }
 }

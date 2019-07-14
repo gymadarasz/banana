@@ -13,7 +13,7 @@ class JSONParser
 {
     
     /**
-     * 
+     *
      * @param string $json
      * @param bool $assoc
      * @return mixed
@@ -46,13 +46,13 @@ class JSONParser
 
         }
         if ($msg) {
-            throw new Exception('JSON parse error' . $msg, -1);
+            throw new Exception('JSON parse error' . $msg, 1001);
         }
         return $data;
     }
     
     /**
-     * 
+     *
      * @param mixed $data
      * @return string
      * @throws Exception

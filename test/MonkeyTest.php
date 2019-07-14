@@ -11,6 +11,11 @@ class MonkeyTest extends Test
 {
     public function run()
     {
+        $this->testOk();
+    }
+    
+    public function testOk()
+    {
         $delivery = new \banana\BananaDelivery();
         $results = $delivery->sorting([
             [
