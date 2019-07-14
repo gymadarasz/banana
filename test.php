@@ -10,4 +10,5 @@ $test = new MonkeyTest;
 $test->run();
 $jsonTest = new JSONParseTest;
 $jsonTest->run();
+
 Test::status();

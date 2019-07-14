@@ -9,9 +9,15 @@ use Exception;
  *
  * @author gyula
  */
-class Test
+abstract class Test
 {
     protected static $counter = 0;
+    
+    public function __construct() {
+        $this->setup();
+    }
+    
+    abstract public function setup();
     
     protected function assert($a, $b)
     {

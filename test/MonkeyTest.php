@@ -9,6 +9,13 @@ namespace banana\test;
  */
 class MonkeyTest extends Test
 {
+    
+    protected $delivery;
+    
+    public function setup() {
+        $this->delivery = new \banana\BananaDelivery();
+    }
+    
     public function run()
     {
         $this->testOk();
@@ -16,8 +23,7 @@ class MonkeyTest extends Test
     
     public function testOk()
     {
-        $delivery = new \banana\BananaDelivery();
-        $results = $delivery->sorting([
+        $results = $this->delivery->sorting([
             [
                 "from" => "Adolfo Suárez Madrid–Barajas Airport, Spain",
                 "to" => "London Heathrow, UK"
