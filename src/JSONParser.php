@@ -11,7 +11,14 @@ use Exception;
  */
 class JSONParser
 {
-    public function parse($json, $assoc = true)
+    
+    /**
+     * 
+     * @param string $json
+     * @param bool $assoc
+     * @return mixed
+     */
+    public function parse(string $json, bool $assoc = true)
     {
         $data = json_decode($json, $assoc);
         switch (json_last_error()) {
@@ -44,7 +51,13 @@ class JSONParser
         return $data;
     }
     
-    public function encode($data)
+    /**
+     * 
+     * @param mixed $data
+     * @return string
+     * @throws Exception
+     */
+    public function encode($data): string
     {
         $json = json_encode($data);
         if ($json === false) {

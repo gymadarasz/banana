@@ -7,9 +7,9 @@ namespace banana\test;
  *
  * @author gyula
  */
-class MonkeyTest
+class MonkeyTest extends Test
 {
-    public function __construct()
+    public function run()
     {
         $delivery = new \banana\BananaDelivery();
         $results = $delivery->sorting([
@@ -35,19 +35,13 @@ class MonkeyTest
             ]
         ]);
         
-        var_dump($results);
-            
-        if ($results !== [
+        $this->assert($results, [
             "Fazenda São Francisco Citros, Brazil",
             "São Paulo–Guarulhos International Airport, Brazil",
             "Porto International Airport, Portugal",
             "Adolfo Suárez Madrid–Barajas Airport, Spain",
             "London Heathrow, UK",
             "Loft Digital, London, UK"
-        ]) {
-            echo "TEST: ERROR";
-        } else {
-            echo "TEST: OK";
-        }
+        ]);
     }
 }

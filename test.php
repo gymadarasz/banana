@@ -2,4 +2,6 @@
 
 include __DIR__ . '/vendor/autoload.php';
 
-new banana\test\MonkeyTest;
+$test = new banana\test\MonkeyTest;
+$test->run();
+$test->status();
