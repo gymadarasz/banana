@@ -1,6 +1,18 @@
 <html>
     <head>
-        <title>Minimalist UI for testing</title>>
+        <title>Minimalist UI for testing</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(function(){                
+                var json = <?php echo $json; ?>;
+                var output = '';
+                for (var k in json) {
+                    output += '<li>' + json[k] + '</li>';
+                }
+                var el = document.getElementById('results');
+                el.innerHTML = output;
+            });
+        </script>
     </head>
     <body>
         <form method="POST">
@@ -8,7 +20,7 @@
             <br><input type="submit">
         </form>
         RESULTS:
-        <pre><?php echo $json; ?></pre>
+        <ul id="results"></ul>
     </body>
 </html>
 
