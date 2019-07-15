@@ -95,16 +95,14 @@ class App
     }
     
     /**
-     * default is JSON
+     * default is JSON otherwise HTML
      * 
      * @return string
      */
     protected function getFormat(): string
     {
-        if (!isset($_REQUEST['format']) || !$_REQUEST['format']) {
-            return 'json';
-        }  
-        return 'html';
+        $format = $this->getRequestVariable('format', 'json');
+        return $format === 'json' ? 'json' : 'html';
     }
     
     /**
@@ -114,15 +112,22 @@ class App
      */
     protected function getStops(): array
     {
-        if (!isset($_REQUEST['stops']) || !$_REQUEST['stops']) {
-            // throw new Exception('Request should contains "stops"', -1);
-            return [];
+        $stops = $this->getRequestVariable('stops', []);
+        if (!$stops) {
+            return $stops;
         }
-        $stops = $_REQUEST['stops'];
-        if (!is_string($stops)) {
+        if ($stops && !is_string($stops)) {
             throw new Exception('"stop" should be a JSON string', -1);
         }
         $parsed = $this->parser->parse($stops, true);
         return $parsed;
+    }
+    
+    protected function getRequestVariable(string $name, $default = null)
+    {
+        if (!isset($_REQUEST[$name]) || !$_REQUEST[$name]) {
+            return $default;
+        }
+        return $_REQUEST[$name];
     }
 }
