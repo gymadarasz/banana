@@ -8,11 +8,6 @@ clone or download this repository and run:
 $ composer install
 ```
 
-running test:
-```
-$ php test.php
-```
-
 phpunit tests also added:
 ```
 $ ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
