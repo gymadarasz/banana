@@ -13,6 +13,11 @@ running test:
 $ php test.php
 ```
 
+phpunit tests also added:
+```
+$ ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/
+```
+
 import postman collection from:
 ```
 postman/Banana.postman_collection.json
